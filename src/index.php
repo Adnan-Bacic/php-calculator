@@ -9,6 +9,9 @@ echo phpversion();
 <?php					
 	// $v1 = $_GET['$val1'];
 	// $v2 = $_GET['$val2'];
+
+	$v1 = '';
+	$v2 = '';
 	
 	//if isset henter operater hvis det er sat, ellers giv fejl.
 	if (isset($_GET['operator'])){
@@ -54,7 +57,6 @@ echo phpversion();
 			
 			break;
 	}
-		echo "<h2 class='text-primary font-weight-bold'>{$v1} {$operator} {$v2} = {$res}</h2>";	
 	}  
 ?>
 
@@ -78,7 +80,7 @@ echo phpversion();
 					<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="get">
 						<div class="form-group">
 							<label for="val1">Number 1</label>
-							<input autocomplete="off" class="form-control" value="<?php echo $_GET['val1'] ?>" type="number" name="val1" required>
+							<input autocomplete="off" class="form-control" value="<?php echo $v1 ?>" type="number" name="val1" required>
 						</div>
 						<div class="form-group">
 							<button class="btn btn-info" type="submit" name="operator" value="add">+</button>
@@ -89,9 +91,14 @@ echo phpversion();
 						</div>
 					<div class="form-group">
 						<label for="val2">Number 2</label>
-						<input autocomplete="off" class="form-control" value="<?php echo $_GET['val2'] ?>" type="number" name="val2" required> 
+						<input autocomplete="off" class="form-control" value="<?php echo $v2 ?>" type="number" name="val2" required> 
 					</div>
 					</form>
+					<?php
+					if (isset($_GET['operator'])){
+						echo "<h2 class='text-primary font-weight-bold'>{$v1} {$operator} {$v2} = {$res}</h2>";	
+					}
+					?>
 				</div>
 			</div>
 		</div>
