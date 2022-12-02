@@ -5,6 +5,59 @@ error_reporting(E_ALL);
 echo phpversion();
 ?>
 
+<!--PHP-->
+<?php					
+	// $v1 = $_GET['$val1'];
+	// $v2 = $_GET['$val2'];
+	
+	//if isset henter operater hvis det er sat, ellers giv fejl.
+	if (isset($_GET['operator'])){
+	$op = $_GET['operator'];
+		$v1 = filter_input(INPUT_GET, 'val1', FILTER_VALIDATE_INT) or die('Missing or illegal val1 parameter');
+		$v2 = filter_input(INPUT_GET, 'val2', FILTER_VALIDATE_INT) or die('Missing or illegal val2 parameter');
+	
+	
+	switch($op){
+		case 'add':
+			$res = $v1+$v2;
+			$operator = '+';
+			
+			break;
+		
+		case 'sub':
+			$res = $v1-$v2;
+			$operator = '-';
+			
+			break;
+			
+		case 'mul':
+			$res = $v1*$v2;
+			$operator = '*';
+			
+			break;
+			
+		case 'div':
+			$res = $v1/$v2;
+			$operator = '/';
+			
+			break;
+			
+		case 'mod':
+			$res = $v1%$v2;
+			$operator = '%';
+			
+			break;
+			
+		default:
+			$res = 'Unknown operator ".$op."';
+			$operator = $op;
+			
+			break;
+	}
+		echo "<h2 class='text-primary font-weight-bold'>{$v1} {$operator} {$v2} = {$res}</h2>";	
+	}  
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -39,59 +92,6 @@ echo phpversion();
 						<input autocomplete="off" class="form-control" value="<?php echo $_GET['val2'] ?>" type="number" name="val2" required> 
 					</div>
 					</form>
-					<!--PHP-->
-					<?php
-						
-						// $v1 = $_GET['$val1'];
-						// $v2 = $_GET['$val2'];
-						
-						//if isset henter operater hvis det er sat, ellers giv fejl.
-						if (isset($_GET['operator'])){
-						$op = $_GET['operator'];
-							$v1 = filter_input(INPUT_GET, 'val1', FILTER_VALIDATE_INT) or die('Missing or illegal val1 parameter');
-							$v2 = filter_input(INPUT_GET, 'val2', FILTER_VALIDATE_INT) or die('Missing or illegal val2 parameter');
-						
-						
-						switch($op){
-							case 'add':
-								$res = $v1+$v2;
-								$operator = '+';
-								
-								break;
-							
-							case 'sub':
-								$res = $v1-$v2;
-								$operator = '-';
-								
-								break;
-								
-							case 'mul':
-								$res = $v1*$v2;
-								$operator = '*';
-								
-								break;
-								
-							case 'div':
-								$res = $v1/$v2;
-								$operator = '/';
-								
-								break;
-								
-							case 'mod':
-								$res = $v1%$v2;
-								$operator = '%';
-								
-								break;
-								
-							default:
-								$res = 'Unknown operator ".$op."';
-								$operator = $op;
-								
-								break;
-						}
-							echo "<h2 class='text-primary font-weight-bold'>{$v1} {$operator} {$v2} = {$res}</h2>";	
-						}  
-					?>
 				</div>
 			</div>
 		</div>
