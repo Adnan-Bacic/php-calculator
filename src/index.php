@@ -15,7 +15,7 @@ echo phpversion();
 	
 	//if isset henter operater hvis det er sat, ellers giv fejl.
 	if (isset($_GET['operator'])){
-	$op = $_GET['operator'];
+		$op = $_GET['operator'];
 		$v1 = filter_input(INPUT_GET, 'val1', FILTER_VALIDATE_INT) or die('Missing or illegal val1 parameter');
 		$v2 = filter_input(INPUT_GET, 'val2', FILTER_VALIDATE_INT) or die('Missing or illegal val2 parameter');
 	
