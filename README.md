@@ -1,2 +1,2 @@
-# calculator
+# php-calculator
 php calculator
